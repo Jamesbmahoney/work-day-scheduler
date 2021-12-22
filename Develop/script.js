@@ -35,7 +35,7 @@ function dateTime() {
     myDate.textContent = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
     myDate.innerText = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
 
-    setTimeout("dateTime()", 1000);
+    setTimeout("dateTime()", 1000);    
 }
 
 dateTime();
