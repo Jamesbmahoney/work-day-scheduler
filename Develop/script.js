@@ -35,33 +35,31 @@ function dateTime() {
     myDate.textContent = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
     myDate.innerText = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
 
-    setTimeout("dateTime()", 1000);    
+    setTimeout("dateTime()", 1000);
 }
 
-dateTime();
+function getInput () {
+    $("#9").val(localStorage.getItem("9"));
+    $("#10").val(localStorage.getItem("10"));
+    $("#11").val(localStorage.getItem("11"));
+    $("#12").val(localStorage.getItem("12"));
+    $("#13").val(localStorage.getItem("13"));
+    $("#14").val(localStorage.getItem("14"));
+    $("#15").val(localStorage.getItem("15"));
+    $("#16").val(localStorage.getItem("16"));
+    $("#17").val(localStorage.getItem("17"));
+    }
 
-$("#9 .description").val(localStorage.getItem("9"));
-$("#10 .description").val(localStorage.getItem("10"));
-$("#11 .description").val(localStorage.getItem("11"));
-$("#12 .description").val(localStorage.getItem("12"));
-$("#13 .description").val(localStorage.getItem("13"));
-$("#14 .description").val(localStorage.getItem("14"));
-$("#15 .description").val(localStorage.getItem("15"));
-$("#16 .description").val(localStorage.getItem("16"));
-$("#17 .description").val(localStorage.getItem("17"));
-
-var time = new Date();
-var hour = time.getHours();
+var newTime = new Date();
+var hour = newTime.getHours();
 
 var currentHour = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 for (var i = 0; i < currentHour.length; i++) {
-    console.log(currentHour[i]);
     if (hour < currentHour[i]) {
         $("#" + currentHour[i])
             .removeClass("present")
             .addClass("future");
     } else if (hour > currentHour[i]) {
-        console.log(hour);
         $("#" + currentHour[i])
             .removeClass("present")
             .addClass("past");
@@ -71,6 +69,13 @@ for (var i = 0; i < currentHour.length; i++) {
     }
 }
 
+$(".saveBtn").on("click", function() {
+    var textBox = $(this).parent().siblings("textarea");
+    var textContent = textBox.val();
+    var time = textBox.attr("id");
+    localStorage.setItem(time, textContent);
+});
 
-
+getInput();
+dateTime();
 
