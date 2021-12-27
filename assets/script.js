@@ -38,7 +38,7 @@ function dateTime() {
     setTimeout("dateTime()", 1000);
 }
 
-function getInput () {
+function getInput() {
     $("#9").val(localStorage.getItem("9"));
     $("#10").val(localStorage.getItem("10"));
     $("#11").val(localStorage.getItem("11"));
@@ -48,7 +48,7 @@ function getInput () {
     $("#15").val(localStorage.getItem("15"));
     $("#16").val(localStorage.getItem("16"));
     $("#17").val(localStorage.getItem("17"));
-    }
+}
 
 var newTime = new Date();
 var hour = newTime.getHours();
@@ -69,7 +69,7 @@ for (var i = 0; i < currentHour.length; i++) {
     }
 }
 
-$(".saveBtn").on("click", function() {
+$(".saveBtn").on("click", function () {
     var textBox = $(this).parent().siblings("textarea");
     var textContent = textBox.val();
     var time = textBox.attr("id");
