@@ -1,3 +1,4 @@
+// Get local date and time
 function dateTime() {
     var myDate = new Date();
     var year = myDate.getYear();
@@ -30,7 +31,7 @@ function dateTime() {
     if (s < 10) {
         s = "0" + s;
     }
-
+    // convert date and time into readable text
     var myDate = document.getElementById("currentDay");
     myDate.textContent = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
     myDate.innerText = "" + dayArray[day] + " " + daym + " " + monthArray[month] + " " + year + " | " + h + ":" + m + ":" + s;
@@ -38,21 +39,11 @@ function dateTime() {
     setTimeout("dateTime()", 1000);
 }
 
-function getInput() {
-    $("#9 .description").val(localStorage.getItem("9"));
-    $("#10 .description").val(localStorage.getItem("10"));
-    $("#11 .description").val(localStorage.getItem("11"));
-    $("#12 .description").val(localStorage.getItem("12"));
-    $("#13 .description").val(localStorage.getItem("13"));
-    $("#14 .description").val(localStorage.getItem("14"));
-    $("#15 .description").val(localStorage.getItem("15"));
-    $("#16 .description").val(localStorage.getItem("16"));
-    $("#17 .description").val(localStorage.getItem("17"));
-}
-
+// call specifically for the local hour
 var newTime = new Date();
 var hour = newTime.getHours();
 
+// change the color of the cells between 3 different states
 var currentHour = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 for (var i = 0; i < currentHour.length; i++) {
     if (hour < currentHour[i]) {
@@ -69,19 +60,27 @@ for (var i = 0; i < currentHour.length; i++) {
     }
 }
 
-// $(".saveBtn").on("click", function () {
-    // var textBox = $(this).parent().siblings("textarea");
-    // var textContent = textBox.val();
-    // var time = textBox.attr("id");
-    // localStorage.setItem(time, textContent);
-// });
-
+// save functionality to local storage from each row
 $(".saveBtn").on("click", function () {
     var time = $(this).parent().attr("id");
     var textContent = $(this).siblings(".description").val();
     localStorage.setItem(time, textContent);
 });
 
+// get information from local storage
+function getInput() {
+    $("#9 .description").val(localStorage.getItem("9"));
+    $("#10 .description").val(localStorage.getItem("10"));
+    $("#11 .description").val(localStorage.getItem("11"));
+    $("#12 .description").val(localStorage.getItem("12"));
+    $("#13 .description").val(localStorage.getItem("13"));
+    $("#14 .description").val(localStorage.getItem("14"));
+    $("#15 .description").val(localStorage.getItem("15"));
+    $("#16 .description").val(localStorage.getItem("16"));
+    $("#17 .description").val(localStorage.getItem("17"));
+}
+
+// call functions
 getInput();
 dateTime();
 
